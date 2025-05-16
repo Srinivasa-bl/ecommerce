@@ -1,0 +1,249 @@
+/* herosection.css */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Poppins:wght@300;400;500;700&display=swap");
+
+:root {
+  --primary-gold: #c5a47e;
+  --dark-bg: #0f0a05;
+  --light-beige: #f4efe6;
+  --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.hero-section {
+  margin-top: 3px;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  font-family: "Playfair Display", serif;
+  perspective: 1000px;
+}
+
+.hero-bg-container {
+  position: absolute;
+  inset: 0;
+}
+
+@keyframes zoomInOut {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.hero-bg-photo {
+  position: absolute;
+  inset: 0;
+  background-image: url("./17bd4e5d-efea-46b8-83fb-d76c18c2ad7f.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  animation: zoomInOut 30s ease-in-out infinite;
+}
+
+.hero-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(15, 10, 5, 0.85) 30%,
+    rgba(15, 10, 5, 0.3) 100%
+  );
+  z-index: 2;
+  mix-blend-mode: multiply;
+}
+
+.hero-bg-particles {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, var(--primary-gold) 1px, transparent 1px)
+      0 0 / 40px 40px,
+    radial-gradient(circle, var(--primary-gold) 1px, transparent 1px) 20px 20px /
+      40px 40px;
+  opacity: 0.1;
+  z-index: 3;
+  animation: particleFlow 40s linear infinite;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  color: var(--light-beige);
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.1;
+}
+
+.hero-title span {
+  display: block;
+  position: relative;
+  transition: var(--transition);
+}
+
+.hero-title span:first-child {
+  color: var(--primary-gold);
+  font-weight: 800;
+  text-shadow: 0 0 30px rgba(197, 164, 126, 0.4);
+}
+
+.hero-title span:last-child {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  font-size: 0.6em;
+  letter-spacing: 0.3em;
+  margin-top: -0.5em;
+  opacity: 0.9;
+}
+
+.hero-tagline {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  max-width: 800px;
+  margin: 2rem auto;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  opacity: 0.9;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.btn-magnetic {
+  position: relative;
+  padding: 1.25rem 2.5rem;
+  border: none;
+  background: none;
+  color: var(--light-beige);
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.btn-background {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(197, 164, 126, 0.2),
+    rgba(197, 164, 126, 0.05)
+  );
+  border: 1px solid rgba(197, 164, 126, 0.3);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  transition: var(--transition);
+}
+
+.btn-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 1;
+}
+
+.btn-arrow {
+  width: 1.2em;
+  height: 1.2em;
+  fill: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.btn-sparkle {
+  width: 1.2em;
+  height: 1.2em;
+  fill: currentColor;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.btn-magnetic:hover .btn-arrow {
+  transform: translateX(5px);
+}
+
+.btn-magnetic:hover .btn-sparkle {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+.btn-magnetic:hover .btn-background {
+  background: linear-gradient(
+    45deg,
+    rgba(197, 164, 126, 0.3),
+    rgba(197, 164, 126, 0.1)
+  );
+  transform: scale(1.05);
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+}
+
+.scroll-line {
+  width: 2px;
+  height: 50px;
+  background: linear-gradient(
+    to bottom,
+    var(--primary-gold) 50%,
+    transparent 100%
+  );
+  animation: scrollBounce 2s infinite;
+}
+
+@keyframes textureShift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 200px 200px;
+  }
+}
+
+@keyframes particleFlow {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 40px;
+  }
+}
+
+@keyframes scrollBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+}
